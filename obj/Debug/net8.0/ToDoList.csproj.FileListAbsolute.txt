@@ -26,3 +26,4 @@
 /home/hasan/Desktop/ToDoList/obj/Debug/net8.0/ToDoList.pdb
 /home/hasan/Desktop/ToDoList/obj/Debug/net8.0/ToDoList.genruntimeconfig.cache
 /home/hasan/Desktop/ToDoList/obj/Debug/net8.0/ref/ToDoList.dll
+/home/hasan/Desktop/ToDoList/obj/Debug/net8.0/ToDoList.sourcelink.json
