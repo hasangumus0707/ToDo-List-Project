@@ -60,13 +60,13 @@ public class HomeController : Controller
                         {
                             TodoList = todoList
                         };
-                    }  
+                    }
                 }
             }
         }
     }
 
-    public RedirectResult Insert(TodoItem todo)
+    public IActionResult Insert(TodoViewModel model)
     {
         using (SqliteConnection con = new SqliteConnection("Data Source=db.sqlite"))
         {
@@ -74,7 +74,7 @@ public class HomeController : Controller
             {
                 con.Open();
                 tableCmd.CommandText = "INSERT INTO todo (name) VALUES (@Name)";
-                tableCmd.Parameters.AddWithValue("@Name", todo.Name);
+                tableCmd.Parameters.AddWithValue("@Name", model.Todo.Name);
                 try
                 {
                     tableCmd.ExecuteNonQuery();
@@ -86,9 +86,75 @@ public class HomeController : Controller
             }
         }
 
-        return Redirect("http://localhost:5247");
+        return RedirectToAction("Index");
     }
 
+    [HttpPost]
+    public JsonResult Delete(int id)
+    {
+        using (SqliteConnection con = new SqliteConnection("Data Source=db.sqlite"))
+        {
+            using (var tableCmd = con.CreateCommand())
+            {
+                con.Open();
+                tableCmd.CommandText = "DELETE FROM todo WHERE Id = @Id";
+                tableCmd.Parameters.AddWithValue("@Id", id);
+                tableCmd.ExecuteNonQuery();
+            }
+        }
+        return Json(new { });
+    }
+
+    [HttpGet]
+    public JsonResult PopulateForm(int id)
+    {
+        TodoItem? todo = null;
+        using (SqliteConnection con = new SqliteConnection("Data Source=db.sqlite"))
+        {
+            using (var tableCmd = con.CreateCommand())
+            {
+                con.Open();
+                tableCmd.CommandText = "SELECT * FROM todo WHERE Id = @Id";
+                tableCmd.Parameters.AddWithValue("@Id", id);
+                
+                using (var reader = tableCmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        todo = new TodoItem
+                        {
+                            Id = reader.GetInt32(0),
+                            Name = reader.GetString(1)
+                        };
+                    }
+                }
+            }
+        }
+        return Json(todo);
+    }
+
+    [HttpPost]
+    public IActionResult Update(TodoViewModel model)
+    {
+        using (SqliteConnection con = new SqliteConnection("Data Source=db.sqlite"))
+        {
+            using (var tableCmd = con.CreateCommand())
+            {
+                con.Open();
+                tableCmd.CommandText = "UPDATE todo SET name = @Name WHERE Id = @Id";
+                tableCmd.Parameters.AddWithValue("@Name", model.Todo.Name);
+                tableCmd.Parameters.AddWithValue("@Id", model.Todo.Id);
+                try
+                {
+                    tableCmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    System.Console.WriteLine(ex.Message);
+                }
+            }
+        }
+        return RedirectToAction("Index");
+    }
 }
-
-

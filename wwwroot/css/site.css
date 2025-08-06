@@ -20,3 +20,33 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Special CSS for long texts */
+.todos-column {
+    word-wrap: break-word;
+    word-break: break-word;
+    max-width: 200px;
+    overflow-wrap: break-word;
+}
+
+.buttons-column {
+    white-space: nowrap;
+    min-width: 150px;
+}
+
+/* Responsive table */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Make buttons smaller on mobile devices */
+@media (max-width: 768px) {
+    .btn-sm {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .todos-column {
+        max-width: 150px;
+    }
+}

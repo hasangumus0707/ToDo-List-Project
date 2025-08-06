@@ -7,5 +7,10 @@
             "database": "${workspaceFolder:ToDoList}/db.sqlite"
         }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "emmet.includeLanguages": {
+        "aspnetcorerazor": "html"
+    },
+    "emmet.showSuggestionsAsSnippets": true,
+    "emmet.triggerExpansionOnTab": true
 }

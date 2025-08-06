@@ -9,11 +9,17 @@
     <link rel="stylesheet" href="~/ToDoList.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <div class="background">
     <div class="container">
-        <partial name="_Form" model="new ToDoList.Models.TodoItem()" />
+        <div class="row justify-content-center">
+        <div class="col-10">
+        <partial name="_Form" model="new ToDoList.Models.TodoViewModel()"/>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        </div>
+        </div>
+    </div>
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
