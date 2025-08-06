@@ -200,6 +200,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **Hasan Gumus**
 - GitHub: [@hasangumus0707](https://github.com/hasangumus0707)
+- Gmail : gumushasan764@gmail.com
 
 ## 🙏 Acknowledgments
 
