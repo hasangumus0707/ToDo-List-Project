@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        @Html.Partial("_Form")
+        <partial name="_Form" model="new ToDoList.Models.TodoItem()" />
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
