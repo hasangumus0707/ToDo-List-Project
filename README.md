@@ -17,6 +17,8 @@ A modern, responsive web application built with ASP.NET Core MVC that allows use
 - **Clean UI**: Modern, intuitive user interface
 - **Text Wrapping**: Handles long todo texts gracefully on all screen sizes
 
+![image alt](https://github.com/hasangumus0707/ToDo-List-Project/blob/79349899fd210f53ba1fc4c4d04616cac27e851a/Screenshot%20from%202025-08-07%2009-27-52.png)
+
 ## 🛠️ Tech Stack
 
 ### Backend
